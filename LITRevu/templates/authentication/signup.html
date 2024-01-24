@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% extends "index.html" %}
+
+{% block content %}
+<div class="section">
+
+    <h2>Inscrivez-vous</h2>
+
+    {% if form.errors %}
+        {{ errors }}
+    {% endif %}
+
+    <form method="post" class="signup-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="buttons-submit-container">
+            <a href="{% url 'login' %}" class="link-button" title="retour page d'accueil">Retourner</a>
+            <button type="submit" title="s'inscrire">S'inscrire</button>
+        </div>
+        
+    </form>
+
+</div>
+
+
+{% endblock content %}</title>
+</head>
+<body>
+
+</body>
+</html>
