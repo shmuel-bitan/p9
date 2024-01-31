@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'index.html' %}
 
-</body>
-</html>
+{% block content %}
+
+    <h2>Créer un ticket</h2>
+    <form method="post" enctype="multipart/form-data" class="ticket-form">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <div class="text-align-right">
+            <button type="submit" title="créer ticket">Envoyer</button>
+        </div>
+        
+    </form>
+
+{% endblock content %}

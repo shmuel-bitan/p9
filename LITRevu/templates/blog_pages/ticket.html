@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="ticket">
+        <ul style="list-style: none;">
+            <li>
+                {% if post.user == user %}
+                    Vous avez publié un billet
+                {% else %}
+                    {{ post.user|capfirst }} a demandé une critique
+                {% endif %}
+            </li>
+            <li class="date-published-ticket">{{post.time_created|date:'H:i, d F Y'}}</li>
+            <li>{{post.title}}</li>
+            <li>{{post.description}}</li>
 
-</body>
-</html>
+
+            {% if post.image %}
+                <li><img src="{{ post.image.url }}" width="200px" alt="image billet {{ post.title }}"></li>
+            {% else %}
+                <li>Pas d'image pour ce ticket</li>
+            {% endif %}
+            {% if post.ticket %}
+                {% include "blog/review.html" %}
+            {% endif %}
+        </ul>
+
+</div>

@@ -1,5 +1,40 @@
 {% extends "index.html" %}
-<div>page principale</div>
 {% block content %}
-<div>insertion du fluux et reste de la page </div>
+
+<div class="my-feed">
+    <div class="flex">
+        <p>
+            <a class="link-button" href="{% url 'create-ticket' %}" title="demander une critique">
+                Demander une critique
+            </a>
+        </p>
+
+        </p>
+    </div>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post" data-aos="fade-up">
+
+                {% if post.content_type == 'Ticket' %}
+                    {% include 'blog/ticket.html' %}
+                    {% if not post.id in tickets_ids_reviewed %}
+                        <p class="container-link">
+                            <a class="link-button" href="{% url 'create-review' post.id %}" title="créer une critique">
+                                Créer une critique
+                            </a>
+                        </p>
+                    {% endif%}
+                {% elif post.content_type == 'Review' %}
+
+                    {% include "blog/review.html" %}
+                {% endif %}
+            </div>
+        {% endfor%}
+    {% else %}
+    <div class="text-center">
+        <p>Vous n'avez actuellement aucun posts à visualiser</p>
+    </div>
+
+    {% endif %}
+</div>
 {% endblock content %}
