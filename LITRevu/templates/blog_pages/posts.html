@@ -11,7 +11,7 @@
             <div class="post" data-aos="zoom-in">
                 {% if post.content_type == 'Ticket' %}
                     
-                    {% include 'blog/ticket.html' %}
+                    {% include 'blog_pages/ticket.html' %}
                     <div class="text-align-right">
                         <a href="{% url 'update-ticket' post.id %}" class="link-button"
                         title="modifier un billet">

@@ -3,12 +3,6 @@ from blog import models
 from authentication import models as a_models
 from django.forms.widgets import ClearableFileInput
 
-class MyClearableFileInput(ClearableFileInput):
-    """Custom clearable file input widget."""
-    initial_text = ""
-    input_text = "Télécharger"
-    clear_checkbox_label = "Effacer"
-    template_name = "blog/my_clearable_file_input.html"
 
 
 class TicketForm(forms.ModelForm):
@@ -18,7 +12,7 @@ class TicketForm(forms.ModelForm):
         forms -- a ticket's model form
     """
     image = forms.ImageField(
-        label_suffix="", required=False, widget=MyClearableFileInput, label=""
+        label_suffix="", required=False, label=""
     )
 
     class Meta:

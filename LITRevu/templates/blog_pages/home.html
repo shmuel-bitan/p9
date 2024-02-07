@@ -16,7 +16,7 @@
             <div class="post" data-aos="fade-up">
 
                 {% if post.content_type == 'Ticket' %}
-                    {% include 'blog/ticket.html' %}
+                    {% include 'blog_pages/ticket.html' %}
                     {% if not post.id in tickets_ids_reviewed %}
                         <p class="container-link">
                             <a class="link-button" href="{% url 'create-review' post.id %}" title="créer une critique">

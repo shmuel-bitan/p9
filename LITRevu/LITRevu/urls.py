@@ -18,13 +18,59 @@ from django.contrib import admin
 from django.urls import path
 from authentication import views as authentication_views
 from blog import views as blog_views
+from django.conf import settings
+
+from django.conf.urls.static import static
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path("signup/", authentication_views.signup_view, name="signup"),
     path("", authentication_views.login_view, name="login"),
     path("logout/", authentication_views.logout_view, name="logout"),
     path("home/", blog_views.home, name="home"),
-    path("create-ticket",blog_views.create_ticket, name="create-ticket")
+    path("create-ticket",blog_views.create_ticket, name="create-ticket"),
+    path("", authentication_views.login_view, name="login"),
+    path("logout/", authentication_views.logout_view, name="logout"),
+    path("home/", blog_views.home, name="home"),
+    path("subscriptions/", blog_views.follow_user, name="subscriptions"),
+    path(
+        "subscriptions/<int:user_follow_id>/unfollow/",
+        blog_views.unfollow_user,
+        name="unfollow",
+    ),
+    path("signup/", authentication_views.signup_view, name="signup"),
+    path("create-ticket/", blog_views.create_ticket, name="create-ticket"),
+    path("posts/", blog_views.AllPostsView, name="posts"),
+    path("ticket/<int:post_id>/", blog_views.ticket_view, name="ticket-view"),
+    path(
+        "ticket/<int:ticket_id>/update-ticket/",
+        blog_views.update_ticket,
+        name="update-ticket",
+    ),
+    path(
+        "ticket/<int:ticket_id>/delete-ticket/",
+        blog_views.delete_ticket,
+        name="delete-ticket",
+    ),
+    path(
+        "create-review/",
+        blog_views.create_ticket_and_review,
+        name="create-ticket-and-review",
+    ),
+    path(
+        "create-review/<int:ticket_id>",
+        blog_views.create_review,
+        name="create-review"
+    ),
+    path(
+        "update-review/<int:review_id>/",
+        blog_views.update_review,
+        name="update-review"
+    ),
+    path(
+        "delete-review/<int:review_id>/",
+        blog_views.delete_review,
+        name="delete-review"
+    ),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
