@@ -24,7 +24,7 @@
                     </div>
                     
                 {% elif post.content_type == 'Review' %}
-                    {% include "blog/review.html" %}
+                    {% include "blog_pages/review.html" %}
                     <div class="text-align-right">
                         <a href="{% url 'update-review' post.id %}" class="link-button"
                         title="modifier la critique">

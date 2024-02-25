@@ -6,7 +6,7 @@
 <form method="post" enctype="multipart/form-data" class="ticket-form">
         {% if post %}
             <p>Vous êtes en train de poster en réponse à</p>
-            {% include "blog/ticket.html" %}
+            {% include "blog_pages/ticket.html" %}
         {% else %}
             {{ ticket_form.as_p }}
         {% endif %}

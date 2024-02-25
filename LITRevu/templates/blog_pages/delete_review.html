@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "index.html" %}
+{% block content %}
 
-</body>
-</html>
+<h2>Supprimer une critique</h2>
+
+<div class="text-center">
+    <p>Êtes-vous sûr de vouloir supprimer cette critique ?</p>
+    <div class="review">
+        {% include "blog_pages/review.html" %}
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Supprimer" title="supprimer">
+        <a href="{% url 'posts' %}" title="retour au posts">Retour à mes posts</a>
+    </form>
+</div>
+
+
+
+{% endblock content %}
