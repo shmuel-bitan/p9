@@ -26,6 +26,8 @@ class Ticket(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
 class Review(models.Model):
     """A class representation of a review
 
@@ -57,6 +59,7 @@ class Review(models.Model):
 
     def __str__(self) -> str:
         return self.headline
+
 
 class UserFollows(models.Model):
     """A class representation of the suscribe system.

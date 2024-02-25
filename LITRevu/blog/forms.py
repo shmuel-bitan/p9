@@ -1,8 +1,6 @@
 from django import forms
 from blog import models
 from authentication import models as a_models
-from django.forms.widgets import ClearableFileInput
-
 
 
 class TicketForm(forms.ModelForm):

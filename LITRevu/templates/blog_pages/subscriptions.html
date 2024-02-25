@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "index.html" %}
 
-</body>
-</html>
+{% block content %}
+<h2 style="font-weight: bold;">Suivie d'autres utilisateurs</h2>
+
+<form method="post" class="suscribe-form">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Envoyer" title="s'abonner">
+</form>
+
+<h2 style="font-weight: bold;">Abonnements</h2 >
+    {% if follows %}
+    
+        {% for follow in follows %}
+            <div class="container-suscriber">
+                <p>{{follow.user}}</p>
+                <a href="{% url 'unfollow' follow.id %}" title="se désabonner de {{ follow.user}}">
+                    Désabonner
+                </a>
+            </div> 
+        {% endfor %}
+
+    {% else %}
+        <p>Vous n'êtes actuellement abonné à aucun utilisateur.</p>
+    {% endif %}
+<h2 style="font-weight: bold;">Abonnés</h2 >
+    {% if followers %}
+        {% for follower in followers %}
+            <div class="container-suscriber">
+                <p>{{follower.followed_user}}</p>
+            </div>    
+        {% endfor %}
+    {% else %}
+            <p>Vous n'avez actuellement aucun abonné.</p>
+    {% endif %}
+
+{% endblock content %}

@@ -28,7 +28,7 @@ urlpatterns = [
     path("", authentication_views.login_view, name="login"),
     path("logout/", authentication_views.logout_view, name="logout"),
     path("home/", blog_views.home, name="home"),
-    path("create-ticket",blog_views.create_ticket, name="create-ticket"),
+    path("create-ticket", blog_views.create_ticket, name="create-ticket"),
     path("", authentication_views.login_view, name="login"),
     path("logout/", authentication_views.logout_view, name="logout"),
     path("home/", blog_views.home, name="home"),
@@ -73,4 +73,4 @@ urlpatterns = [
         name="delete-review"
     ),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
